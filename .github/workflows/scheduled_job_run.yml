@@ -3,8 +3,8 @@ name: Scheduled DAB Job Run
 on:
   workflow_dispatch:
   schedule:
-    # Every 5 minutes (for testing)
-    - cron: "*/3 * * * *"
+    # Every 7 minutes (for testing)
+    - cron: "*/7 * * * *"
 
 jobs:
   run:
