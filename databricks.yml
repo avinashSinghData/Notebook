@@ -1,3 +1,6 @@
+bundle:
+  name: notebook_bundles
+
 resources:
   jobs:
     data_pipeline_job:
