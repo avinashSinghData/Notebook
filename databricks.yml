@@ -6,10 +6,20 @@ resources:
     data_pipeline_job:
       name: job job
 
+      parameters:
+        - name: env
+          default: develop
+
+        - name: run_date
+          default: ""
+
       tasks:
         - task_key: bronze_ingest
           notebook_task:
             notebook_path: 01_bronze/ingest.ipynb
+            base_parameters:
+              env: "{{job.parameters.env}}"
+              run_date: "{{job.parameters.run_date}}"
 
         - task_key: silver_transform
           notebook_task:
