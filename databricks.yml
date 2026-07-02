@@ -22,3 +22,10 @@ resources:
             notebook_path: 03_gold/reporting.ipynb
           depends_on:
             - task_key: silver_transform
+
+targets:
+  test:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-50688538-69d5.cloud.databricks.com 
