@@ -1,33 +1,31 @@
-# This file works in conjunction with dab_deploy.yml which is under the folder .github/workflows
-
-bundle:
-  name: test_bundles
-
 resources:
   jobs:
     data_pipeline_job:
       name: job job
-    
+
+      parameters:
+        - name: env
+          default: develop
+
+        - name: run_date
+          default: ""
+
       tasks:
         - task_key: bronze_ingest
           notebook_task:
             notebook_path: 01_bronze/ingest.ipynb
-          
+          base_parameters:
+            env: "{{job.parameters.env}}"
+            run_date: "{{job.parameters.run_date}}"
+
         - task_key: silver_transform
           notebook_task:
             notebook_path: 02_silver/transform.ipynb
           depends_on:
             - task_key: bronze_ingest
-          
+
         - task_key: gold_reporting
           notebook_task:
             notebook_path: 03_gold/reporting.ipynb
           depends_on:
             - task_key: silver_transform
-
-targets:
-  test:
-    mode: development
-    default: true
-    workspace:
-      host: https://dbc-50688538-69d5.cloud.databricks.com
