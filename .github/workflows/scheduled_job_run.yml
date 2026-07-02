@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Every 7 minutes (for testing)
-    - cron: "*/7 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   run:
