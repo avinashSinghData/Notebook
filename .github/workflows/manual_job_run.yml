@@ -1,4 +1,4 @@
-name: Run DAB Job
+name: Manual Run DAB Job
 
 on:
   workflow_dispatch:
