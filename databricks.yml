@@ -7,9 +7,6 @@ resources:
         - task_key: bronze_ingest
           notebook_task:
             notebook_path: 01_bronze/ingest.ipynb
-            base_parameters:
-              env: develop
-              run_date: ""
 
         - task_key: silver_transform
           notebook_task:
